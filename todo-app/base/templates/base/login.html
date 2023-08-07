@@ -7,8 +7,18 @@
 
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login">
+    <div class="form-inner">
+        {% for field in form %}
+        <div class="form-group">
+            {{field.label_tag}}
+            <div>{{field}}</div>
+            {% for error in field.errors %}
+            <div class="alert alert-danger">{{error}}</div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <input type="submit" value="Login" id="submitBtn">
 
     <p>Don't haven't account? <a href="{% url 'register'%}">Register</a></p>
 </form>

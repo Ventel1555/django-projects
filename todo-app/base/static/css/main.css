@@ -92,3 +92,45 @@ a{
 .defealt_text{
     font-size: 22px;
 }
+/* form task */
+.form-inner {
+padding: 50px;
+}
+.form-inner input, .form-inner textarea {
+display: block;
+width: 100%;
+padding: 0 20px;
+margin-bottom: 10px;
+background: #E9EFF6;
+line-height: 40px;
+border-width: 0;
+border-radius: 20px;
+font-family: 'Roboto', sans-serif;
+}
+.form-inner input[type="submit"] {
+margin-top: 30px;
+background: #f69a73;
+border-bottom: 4px solid #d87d56;
+color: white;
+font-size: 14px;
+}
+.form-inner textarea {
+resize: none;
+}
+.form-inner h3 {
+margin-top: 0;
+font-family: 'Roboto', sans-serif;
+font-weight: 500;
+font-size: 24px;
+color: #707981;
+}
+#submitBtn {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #153677, #4e085f);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+  }

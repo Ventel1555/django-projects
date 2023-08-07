@@ -1,14 +1,23 @@
 {% extends 'main.html'%}
 {% block content %}
 
-
+<!--Создание задачи | Creating the task-->
 <h2>Task form</h2>
 <a href="{% url 'tasks' %}">Go bask</a>
 
-<form method="POST" action="">
+<form method="POST" action="" class="decor">
     {%csrf_token%}
-    {{form.as_p}}
-    <input type="submit" value="Submit">
+    <div class="form-inner">
+        {% for field in form %}
+        <div class="form-group">
+            {{field.label_tag}}
+            <div>{{field}}</div>
+            {% for error in field.errors %}
+            <div class="alert alert-danger">{{error}}</div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <input type="submit" value="Submit" id="submitBtn">
 </form>
-
 {% endblock content %}
