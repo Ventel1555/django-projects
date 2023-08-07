@@ -1,3 +1,4 @@
+from django.http import HttpResponseForbidden
 from .models import Task
 from django.views.decorators.csrf import csrf_exempt
 
@@ -90,6 +91,14 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
     context_object_name = 'task'
     success_url = reverse_lazy('tasks')
 
-def complete_update(requests, pk):
+def complete_update(request, pk):
     tasks = get_object_or_404(Task, pk=pk)
-    return
+    if request.user.id == tasks.user_id:
+        if tasks.complete:
+            tasks.complete = False
+        else:
+            tasks.complete = True
+        tasks.save()
+    else:
+        HttpResponseForbidden()
+    return redirect('tasks')

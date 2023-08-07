@@ -33,7 +33,7 @@
             </li>
             {% else %}
             <li>
-                <img class="item-check" src="{% static 'images/unchecked.png' %}"> 
+                <a href="{% url 'task-complete' task.pk %}"><img class="item-check" src="{% static 'images/unchecked.png' %}"></a>
                 <a class="ul-li" href="{% url 'task-update' task.id %}">{{task}}</a> 
                 <a class="ul-li-close" href="{% url 'task-delete' task.id %}">&#215;</a>
             </li>

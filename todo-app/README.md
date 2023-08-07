@@ -3,12 +3,12 @@ Simple To do app.
 
 Code, what help you to install app (Windows):
 ```
-py -m venv .venv
+python -m venv .venv
 .\.venv\Scripts\activate
 pip install django
-py manage.py makemigrations
-py manage.py migrate
-py manage.py runserver
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
 ```
 Done!:white_check_mark: Go to browser using the link from the console.
 

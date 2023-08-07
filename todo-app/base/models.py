@@ -13,5 +13,5 @@ class Task(models.Model):
         return self.title
     
     class Meta:
-        ordering = ['complete']
+        ordering = ['id']
         
