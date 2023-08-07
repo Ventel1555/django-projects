@@ -27,5 +27,3 @@ ____
 *WOW!*
 
 Если у вас есть *неотложенные* дела или задачи, то это приложение *точно* для **вас**!
-____
-![image](https://github.com/Ventel1555/django-projects/blob/main/todo-app/animation.gif)
