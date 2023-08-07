@@ -1,0 +1,52 @@
+{% extends 'main.html'%}
+{% load static %}
+{% block content %}
+
+{% if request.user.is_authenticated%}
+<div class="defealt_text">
+<h2>You have {{count}} incomplete task{{count|pluralize:"s"}}</h2>
+<p>Hi, {{request.user}}, make your new task here! >> <a href="{% url 'task-create' %}">Add Task</a></p>
+<a href="{% url 'logout' %}">Log-out</a>
+{% else %}
+<a href="{% url 'login' %}">Log-in</a>
+{% endif %}
+</div>
+<br>
+<hr>
+<br>
+<h1>My To Do List <img src="{% static 'images/icon.png' %}"></h1>
+
+<form method="get" class="searcher">
+    <input class="input-search" type="text" name="search-area" placeholder="Search here" value="{{search_input}}">
+    <button class="button-search" type="submit">Search</button>
+</form>
+
+<div id="tasklist" class="task-items-wrapper">
+    {% for task in tasks %}
+    <div class="task-wrapper" data-position="{{task.pk}}">
+        <ul>
+            {% if task.complete %}
+            <li>
+                <a href="{% url 'task-complete' task.pk %}"><img class="item-check" src="{% static 'images/checked.png' %}"></a>
+                <a class="ul-li" style="text-decoration: line-through;"  href="{% url 'task-update' task.id %}">{{task}}</a>  
+                <a class="ul-li-close" href="{% url 'task-delete' task.id %}">&#215;</a>
+            </li>
+            {% else %}
+            <li>
+                <img class="item-check" src="{% static 'images/unchecked.png' %}"> 
+                <a class="ul-li" href="{% url 'task-update' task.id %}">{{task}}</a> 
+                <a class="ul-li-close" href="{% url 'task-delete' task.id %}">&#215;</a>
+            </li>
+            {% endif %}
+        </ul>
+
+    </div>
+    
+    {% empty %}
+    <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
+        <h3>No new tasks are created.</h3>
+        <h3>Create a <a style="text-decoration: none; color: #e53935;" href="{% url 'task-create' %}">New task</a> ! </h3>
+    </div>
+    {% endfor %}
+
+{% endblock content %}

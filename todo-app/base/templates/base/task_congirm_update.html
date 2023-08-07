@@ -1,0 +1,12 @@
+{% extends 'main.html'%}
+{% block content %}
+
+
+<a href="{% url 'tasks' %}">Go back</a>
+<form method="post">
+    {% csrf_token %}
+    <p>Are you sure to update this task?</p>
+    <input type="submit" value="Delte">
+</form>
+
+{% endblock content %}
